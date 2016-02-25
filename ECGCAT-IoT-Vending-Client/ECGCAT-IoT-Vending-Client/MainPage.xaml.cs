@@ -82,12 +82,12 @@ namespace ECGCAT_IoT_Vending_Client
                     Debug.WriteLine(sd.Created);
                     //Write the values to your debug console
                     Debug.WriteLine("Created: " + sd.Created + " ft");
-                    time.Text = sd.Created.ToString();
+                    time.Text = sd.Created.ToString("g");
                     Debug.WriteLine("Temperature: " + sd.TemperatureinF + " deg F");
                     //TESTING UNCOMMENT LATER IF NEEDED temperature.Text = sd.TemperatureinF + " deg F";
                     temperature.Text = (sd.TemperatureinF.ToString("F2") + "°F");
                     Debug.WriteLine("Pressure: " + sd.Pressureinmb + " mb");
-                    pressure.Text = sd.Pressureinmb + " mb";
+                    pressure.Text = (sd.Pressureinmb.ToString("F0") + " mb");
                     
 
                 }, TaskScheduler.FromCurrentSynchronizationContext());
@@ -97,7 +97,7 @@ namespace ECGCAT_IoT_Vending_Client
                     
                     Debug.WriteLine("Lux: " + ld.Lux);
                     Debug.WriteLine("Color Temp:" + ld.ColorTempinK + " K");
-                    lux.Text = ld.Lux + " unit"; 
+                    lux.Text = (ld.Lux.ToString("F0") + " lx"); 
                     
                 }, TaskScheduler.FromCurrentSynchronizationContext());
                 pinValue = GpioPinValue.High;
