@@ -7,9 +7,39 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="time" HorizontalAlignment="Left" Margin="14,75,0,0" TextWrapping="Wrap" Text="Time:" VerticalAlignment="Top" Height="49" Width="331" FontSize="18.667"/>
-        <TextBlock x:Name="temperature" HorizontalAlignment="Left" Margin="14,129,0,0" TextWrapping="Wrap" Text="Temp:" VerticalAlignment="Top" Height="49" Width="331" FontSize="18.667"/>
-        <TextBlock x:Name="pressure" HorizontalAlignment="Left" Margin="14,178,0,0" TextWrapping="Wrap" Text="Pressure: " VerticalAlignment="Top" Height="49" Width="331" FontSize="18.667"/>
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="auto" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                    Width="auto" />
+            <ColumnDefinition
+                    Width="150" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Foreground="White" FontSize="30" FontWeight="Bold" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center">Contosso Vending Co.</TextBlock>
+        <TextBlock Foreground="White" Text="Time: " Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Foreground="White" Text="Temp: " Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Foreground="White" Text="Pressure: " Grid.Column="0" Grid.Row="3" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Foreground="White" Text="Lux: " Grid.Column="0" Grid.Row="4" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Foreground="White" x:Name="time" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" TextWrapping="WrapWholeWords"></TextBlock>
+        <TextBlock Foreground="White" x:Name="temperature" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Foreground="White" x:Name="pressure" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Foreground="White" x:Name="lux" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Foreground="White" x:Name="logArea" Text="log" Grid.Row="5" Grid.ColumnSpan="2"></TextBlock>
+        <Image Grid.Row="1" Grid.Column="2" Grid.RowSpan="5">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="600" UriSource="Assets/bottles900x600.jpg" />
+            </Image.Source>
+        </Image>
+        <Button Content="Dispense" Grid.Column="2" Grid.Row="5" ClickMode="Press" Background="ForestGreen" Foreground="White" Height="75" Width="150" FontSize="20" Margin="347.8,35,0,10"></Button>
+        <Button Content="Select" Grid.Column="2" Grid.Row="5" ClickMode="Press" Background="ForestGreen" Foreground="White" Height="75" Width="150" FontSize="20" Margin="75.8,35,0,10"></Button>
     </Grid>
 </Page>

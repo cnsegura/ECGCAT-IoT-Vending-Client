@@ -23,7 +23,7 @@ namespace ECGCAT_IoT_Vending_Client
         private GpioPin pin;
         private GpioPinValue pinValue;
         private DispatcherTimer LoggerTimer;
-        private DispatcherTimer Timer;
+      
         //A class which wraps the color sensor
         TCS34725 colorSensor;
         //A class which wraps the barometric sensor
@@ -45,8 +45,6 @@ namespace ECGCAT_IoT_Vending_Client
             {
                 LoggerTimer_Tick(this, null);
                 LoggerTimer.Start();
-                //Timer_Tick(this, null);
-                //Timer.Start();
             }
         }
 
@@ -86,7 +84,8 @@ namespace ECGCAT_IoT_Vending_Client
                     Debug.WriteLine("Created: " + sd.Created + " ft");
                     time.Text = sd.Created.ToString();
                     Debug.WriteLine("Temperature: " + sd.TemperatureinF + " deg F");
-                    temperature.Text = sd.TemperatureinF + " deg F";
+                    //TESTING UNCOMMENT LATER IF NEEDED temperature.Text = sd.TemperatureinF + " deg F";
+                    temperature.Text = (sd.TemperatureinF.ToString("F2") + "°F");
                     Debug.WriteLine("Pressure: " + sd.Pressureinmb + " mb");
                     pressure.Text = sd.Pressureinmb + " mb";
                     
@@ -98,6 +97,7 @@ namespace ECGCAT_IoT_Vending_Client
                     
                     Debug.WriteLine("Lux: " + ld.Lux);
                     Debug.WriteLine("Color Temp:" + ld.ColorTempinK + " K");
+                    lux.Text = ld.Lux + " unit"; 
                     
                 }, TaskScheduler.FromCurrentSynchronizationContext());
                 pinValue = GpioPinValue.High;
