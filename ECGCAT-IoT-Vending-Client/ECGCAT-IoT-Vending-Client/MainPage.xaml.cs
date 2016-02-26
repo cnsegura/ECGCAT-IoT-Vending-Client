@@ -24,8 +24,6 @@ namespace ECGCAT_IoT_Vending_Client
         private GpioPinValue pinValue;
         private DispatcherTimer LoggerTimer;
 
-        //clas which wraps the kafka REST proxy
-        Kafka kafka;
         //A class which wraps the color sensor
         TCS34725 colorSensor;
         //A class which wraps the barometric sensor
@@ -36,7 +34,10 @@ namespace ECGCAT_IoT_Vending_Client
         public MainPage()
         {
             this.InitializeComponent();
-            
+
+            //SensorData sd = new SensorData(); 
+            //Task.Run(() => kafka.PostDataAsync(sd, "SensorData"));
+
             LoggerTimer = new DispatcherTimer();
             LoggerTimer.Interval = TimeSpan.FromSeconds(3); //take data every 3 seconds
             LoggerTimer.Tick += LoggerTimer_Tick;
@@ -80,7 +81,8 @@ namespace ECGCAT_IoT_Vending_Client
                 ReadWeatherData().ContinueWith((t) =>
                 {
                     SensorData sd = t.Result;
-                    
+                    Kafka kafka = new Kafka();
+
                     Debug.WriteLine(sd.Created);
                     //Write the values to your debug console
                     Debug.WriteLine("Created: " + sd.Created + " ft");
@@ -89,6 +91,8 @@ namespace ECGCAT_IoT_Vending_Client
                     temperature.Text = (sd.TemperatureinF.ToString("F2") + "°F");
                     Debug.WriteLine("Pressure: " + sd.Pressureinmb + " mb");
                     pressure.Text = (sd.Pressureinmb.ToString("F0") + " mb");
+
+                    Task.Run(() => kafka.PostDataAsync(sd, "SensorData")); //fire and forget for now
 
                 }, TaskScheduler.FromCurrentSynchronizationContext());
                 ReadLightData().ContinueWith((t) =>
