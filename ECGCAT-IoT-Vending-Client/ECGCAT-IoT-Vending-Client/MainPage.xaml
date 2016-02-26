@@ -29,18 +29,18 @@
         <TextBlock Foreground="White" Text="Temp: " Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="0,0,5,0"></TextBlock>
         <TextBlock Foreground="White" Text="Pressure: " Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="0,0,5,0"></TextBlock>
         <TextBlock Foreground="White" Text="Lux: " Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="0,0,5,0"></TextBlock>
-        <TextBlock Foreground="White" x:Name="time" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="WrapWholeWords"></TextBlock>
-        <TextBlock Foreground="White" x:Name="temperature" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
-        <TextBlock Foreground="White" x:Name="pressure" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" ></TextBlock>
-        <TextBlock Foreground="White" x:Name="lux" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+        <TextBlock Foreground="White" x:Name="time" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="5,0,0,0" TextWrapping="WrapWholeWords"></TextBlock>
+        <TextBlock Foreground="White" x:Name="temperature" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="5,0,0,0"></TextBlock>
+        <TextBlock Foreground="White" x:Name="pressure" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="5,0,0,0"></TextBlock>
+        <TextBlock Foreground="White" x:Name="lux" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="5,0,0,0"></TextBlock>
         <TextBlock Foreground="White" x:Name="logArea" Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
         <Image Grid.Row="1" Grid.Column="2" Grid.RowSpan="5">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="600" UriSource="Assets/bottles900x600.jpg" />
             </Image.Source>
         </Image>
-        <Button Content="Dispense" Grid.Column="2" Grid.Row="5" ClickMode="Press" Background="ForestGreen" Foreground="White" Height="75" Width="150" FontSize="20" Margin="347.8,35,0,10"></Button>
-        <Button Content="Select" Grid.Column="2" Grid.Row="5" ClickMode="Press" Background="ForestGreen" Foreground="White" Height="75" Width="150" FontSize="20" Margin="75.8,35,0,10"></Button>
+        <Button Content="Dispense" Grid.Column="2" Grid.Row="5" ClickMode="Press" Background="ForestGreen" Foreground="White" Height="75" Width="150" FontSize="20" Margin="347.8,35,0,10" Click="Button_Click_1"></Button>
+        <Button Content="Select" Grid.Column="2" Grid.Row="5" ClickMode="Press" Background="ForestGreen" Foreground="White" Height="75" Width="150" FontSize="20" Margin="75.8,35,0,10" Click="Button_Click"></Button>
 
         <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" BorderBrush="#383838" BorderThickness="0,0,1,0"></Border>
         <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="#383838" BorderThickness="0,1,1,0"></Border>

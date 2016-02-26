@@ -23,7 +23,7 @@ namespace ECGCAT_IoT_Vending_Client
         private GpioPin pin;
         private GpioPinValue pinValue;
         private DispatcherTimer LoggerTimer;
-
+        private bool go = false; 
         //A class which wraps the color sensor
         TCS34725 colorSensor;
         //A class which wraps the barometric sensor
@@ -92,13 +92,16 @@ namespace ECGCAT_IoT_Vending_Client
                     Debug.WriteLine("Pressure: " + sd.Pressureinmb + " mb");
                     pressure.Text = (sd.Pressureinmb.ToString("F0") + " mb");
 
-                    Task.Run(() => kafka.PostDataAsync(sd, "SensorData")); //fire and forget for now
+                    if (go == true)
+                    {
+                        Task.Run(() => kafka.PostDataAsync(sd, "SensorData")); //fire and forget for now
+                    }
 
                 }, TaskScheduler.FromCurrentSynchronizationContext());
                 ReadLightData().ContinueWith((t) =>
                 {
                     LightData ld = t.Result;
-                    
+
                     //enable at future date
                     //Kafka kafka = new Kafka();
 
@@ -106,8 +109,11 @@ namespace ECGCAT_IoT_Vending_Client
                     Debug.WriteLine("Color Temp:" + ld.ColorTempinK + " K");
                     lux.Text = (ld.Lux.ToString("F0") + " lx");
 
-                    //enable at future date
-                    //Task.Run(() => kafka.PostDataAsync(sd, "SensorData")); //fire and forget for now
+                    //enable at future date (see above as well)
+                    //if (go == true)
+                    //{
+                    //    Task.Run(() => kafka.PostDataAsync(sd, "SensorData")); //fire and forget for now
+                    //}
 
                 }, TaskScheduler.FromCurrentSynchronizationContext());
                 
@@ -192,6 +198,16 @@ namespace ECGCAT_IoT_Vending_Client
                 Debug.WriteLine(ex.Message);
             }
             return ld;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            go = true;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            go = false;
         }
     }
 }

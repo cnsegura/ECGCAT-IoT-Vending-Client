@@ -26,6 +26,7 @@ namespace ECGCAT_IoT_Vending_Client
             u1.Path = "topics" + _topic;
             u1.Scheme = "http";
             Uri topicUri = u1.Uri;
+            
             //Currently focused on REST API surface for Confluent.io Kafka deployment. We can make this more generic in the future
             string jsonBody = JsonConvert.SerializeObject(_data, Formatting.None);
             
