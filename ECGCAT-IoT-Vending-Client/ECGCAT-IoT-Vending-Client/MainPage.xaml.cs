@@ -99,10 +99,16 @@ namespace ECGCAT_IoT_Vending_Client
                 {
                     LightData ld = t.Result;
                     
+                    //enable at future date
+                    //Kafka kafka = new Kafka();
+
                     Debug.WriteLine("Lux: " + ld.Lux);
                     Debug.WriteLine("Color Temp:" + ld.ColorTempinK + " K");
-                    lux.Text = (ld.Lux.ToString("F0") + " lx"); 
-                    
+                    lux.Text = (ld.Lux.ToString("F0") + " lx");
+
+                    //enable at future date
+                    //Task.Run(() => kafka.PostDataAsync(sd, "SensorData")); //fire and forget for now
+
                 }, TaskScheduler.FromCurrentSynchronizationContext());
                 
                 pinValue = GpioPinValue.High;
