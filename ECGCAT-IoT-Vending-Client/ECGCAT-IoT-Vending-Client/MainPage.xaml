@@ -33,7 +33,7 @@
         <TextBlock Foreground="White" x:Name="temperature" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
         <TextBlock Foreground="White" x:Name="pressure" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
         <TextBlock Foreground="White" x:Name="lux" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-        <TextBlock Foreground="White" x:Name="logArea" Text="log" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock Foreground="White" x:Name="logArea" Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
         <Image Grid.Row="1" Grid.Column="2" Grid.RowSpan="5">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="600" UriSource="Assets/bottles900x600.jpg" />
