@@ -42,7 +42,7 @@
         <Button Content="Dispense" Grid.Column="2" Grid.Row="5" ClickMode="Press" Background="ForestGreen" Foreground="White" Height="75" Width="150" FontSize="20" Margin="347.8,35,0,10"></Button>
         <Button Content="Select" Grid.Column="2" Grid.Row="5" ClickMode="Press" Background="ForestGreen" Foreground="White" Height="75" Width="150" FontSize="20" Margin="75.8,35,0,10"></Button>
 
-        <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" BorderBrush="Gray" BorderThickness="0,0,1,0"></Border>
-        <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Gray" BorderThickness="0,1,1,0"></Border>
+        <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" BorderBrush="#383838" BorderThickness="0,0,1,0"></Border>
+        <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="#383838" BorderThickness="0,1,1,0"></Border>
     </Grid>
 </Page>

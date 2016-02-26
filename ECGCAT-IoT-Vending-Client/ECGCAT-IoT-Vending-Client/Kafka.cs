@@ -47,7 +47,7 @@ namespace ECGCAT_IoT_Vending_Client
             }
             catch
             {
-                //TODO
+                return;
             }
 
         }
