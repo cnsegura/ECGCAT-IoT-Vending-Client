@@ -23,7 +23,7 @@ namespace ECGCAT_IoT_Vending_Client
             //u1.Host = "localhost"; //DEBUG
             u1.Host = "wssccatiot.westus.cloudapp.azure.com";
             u1.Port = 8082;
-            u1.Path = "topics" + _topic;
+            u1.Path = "topics/" + _topic;
             u1.Scheme = "http";
             Uri topicUri = u1.Uri;
             
