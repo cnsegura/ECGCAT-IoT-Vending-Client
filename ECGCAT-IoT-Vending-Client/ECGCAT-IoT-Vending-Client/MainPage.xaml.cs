@@ -209,5 +209,10 @@ namespace ECGCAT_IoT_Vending_Client
         {
             go = false;
         }
+
+        private void AppSettings_Click(object sender, RoutedEventArgs e)
+        {
+            AppMenu.IsPaneOpen = !AppMenu.IsPaneOpen;
+        }
     }
 }
