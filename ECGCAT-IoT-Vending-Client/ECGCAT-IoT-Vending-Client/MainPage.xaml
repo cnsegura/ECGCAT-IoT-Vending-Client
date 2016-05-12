@@ -8,11 +8,13 @@
     mc:Ignorable="d">
     <SplitView x:Name="AppMenu" DisplayMode="Overlay" IsPaneOpen="False" OpenPaneLength="150" FlowDirection="LeftToRight">
         <SplitView.Pane>
-            <StackPanel Background="Black">
-                <TextBlock HorizontalAlignment="Center">IP address or URL"</TextBlock>
-                <TextBox x:Name="IpUrl"></TextBox>
-                <TextBlock HorizontalAlignment="Center">Port</TextBlock>
-                <TextBox x:Name="Port" Foreground="DarkGray" ></TextBox>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock HorizontalAlignment="Left" Foreground="White">Online Mode</TextBlock>
+                <ToggleSwitch x:Name="OfflineMode" Foreground="White" OffContent="Offline" OnContent="Online" Toggled="OfflineMode_Toggled" ></ToggleSwitch>
+                <TextBlock x:Name="IpTextBlock" HorizontalAlignment="Left" Foreground="White">IP address or URL</TextBlock>
+                <TextBox x:Name="IpUrlBox" HorizontalAlignment="Left"></TextBox>
+                <TextBlock x:Name="PortTextBlock" HorizontalAlignment="Left" Foreground="White">Port</TextBlock>
+                <TextBox x:Name="PortBox" HorizontalAlignment="Left"></TextBox>
             </StackPanel>
 
         </SplitView.Pane>

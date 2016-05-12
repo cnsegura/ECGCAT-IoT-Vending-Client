@@ -213,6 +213,41 @@ namespace ECGCAT_IoT_Vending_Client
         private void AppSettings_Click(object sender, RoutedEventArgs e)
         {
             AppMenu.IsPaneOpen = !AppMenu.IsPaneOpen;
+            if (OfflineMode.IsOn == false)
+            {
+                SettingsToggleOff();
+            }
+        }
+
+        private void OfflineMode_Toggled(object sender, RoutedEventArgs e)
+        {
+            ToggleSwitch toggleSwitch = sender as ToggleSwitch;
+            if (toggleSwitch !=null)
+            {
+                if (toggleSwitch.IsOn == true)
+                {
+                    SettingsToggleOn();
+                }
+                else
+                {
+                    SettingsToggleOff();
+                    
+                }
+            }
+        }
+        private void SettingsToggleOn()
+        {
+            IpTextBlock.Visibility = Visibility.Visible;
+            IpUrlBox.Visibility = Visibility.Visible;
+            PortTextBlock.Visibility = Visibility.Visible;
+            PortBox.Visibility = Visibility.Visible;
+        }
+        private void SettingsToggleOff()
+        {
+            IpTextBlock.Visibility = Visibility.Collapsed;
+            IpUrlBox.Visibility = Visibility.Collapsed;
+            PortTextBlock.Visibility = Visibility.Collapsed;
+            PortBox.Visibility = Visibility.Collapsed;
         }
     }
 }
