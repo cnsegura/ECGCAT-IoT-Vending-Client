@@ -23,7 +23,9 @@ namespace ECGCAT_IoT_Vending_Client
         private GpioPin pin;
         private GpioPinValue pinValue;
         private DispatcherTimer LoggerTimer;
-        private bool go = false; 
+        private bool go = false;
+        private string serverPort;
+        private string serverIPURL;
         //A class which wraps the color sensor
         TCS34725 colorSensor;
         //A class which wraps the barometric sensor
@@ -35,8 +37,7 @@ namespace ECGCAT_IoT_Vending_Client
         {
             this.InitializeComponent();
 
-            //SensorData sd = new SensorData(); 
-            //Task.Run(() => kafka.PostDataAsync(sd, "SensorData"));
+            RetreiveAppStore();
 
             LoggerTimer = new DispatcherTimer();
             LoggerTimer.Interval = TimeSpan.FromSeconds(3); //take data every 3 seconds
@@ -94,7 +95,7 @@ namespace ECGCAT_IoT_Vending_Client
 
                     if (go == true)
                     {
-                        Task.Run(() => kafka.PostDataAsync(sd, "SensorData")); //fire and forget for now
+                        Task.Run(() => kafka.PostDataAsync(sd, "SensorData", serverIPURL, serverPort)); //fire and forget for now
                     }
 
                 }, TaskScheduler.FromCurrentSynchronizationContext());
@@ -202,7 +203,26 @@ namespace ECGCAT_IoT_Vending_Client
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            go = true;
+            if (serverIPURL == null && serverPort ==null) //there is no local app settings store value for port and URL, we need to get one
+            { 
+                if (IpUrlBox.Text == "" && PortBox.Text == "")
+                {
+                    logArea.Text = "You need to add an IP/URL and Port number for the server";
+                    go = false; 
+                }
+                else
+                {
+                    logArea.Text = "";
+                    serverIPURL = IpUrlBox.Text;
+                    serverPort = PortBox.Text;
+                    SetAppStore(serverIPURL, serverPort);
+                    go = true;
+                }
+            }
+            else //we pulled the previously stored values from the local app settings store
+            {
+                go = true;
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -248,6 +268,31 @@ namespace ECGCAT_IoT_Vending_Client
             IpUrlBox.Visibility = Visibility.Collapsed;
             PortTextBlock.Visibility = Visibility.Collapsed;
             PortBox.Visibility = Visibility.Collapsed;
+        }
+        private void RetreiveAppStore()
+        {
+            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+
+            object portValue = localSettings.Values["serverPort"];
+            if (portValue != null)
+            {
+                serverPort = portValue.ToString();
+            }
+
+            object ipValue = localSettings.Values["ipAddress"];
+            if (ipValue != null)
+            { 
+                serverIPURL = ipValue.ToString();
+            }
+
+        }
+        private void SetAppStore(string _ipString, string _portString)
+        {
+            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            localSettings.Values["serverPort"] = _portString;
+            localSettings.Values["ipAddress"] = _ipString;
         }
     }
 }

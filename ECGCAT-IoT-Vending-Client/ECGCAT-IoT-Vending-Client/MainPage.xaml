@@ -12,9 +12,9 @@
                 <TextBlock HorizontalAlignment="Left" Foreground="White">Online Mode</TextBlock>
                 <ToggleSwitch x:Name="OfflineMode" Foreground="White" OffContent="Offline" OnContent="Online" Toggled="OfflineMode_Toggled" ></ToggleSwitch>
                 <TextBlock x:Name="IpTextBlock" HorizontalAlignment="Left" Foreground="White">IP address or URL</TextBlock>
-                <TextBox x:Name="IpUrlBox" HorizontalAlignment="Left"></TextBox>
+                <TextBox x:Name="IpUrlBox" Width="150" HorizontalAlignment="Left"></TextBox>
                 <TextBlock x:Name="PortTextBlock" HorizontalAlignment="Left" Foreground="White">Port</TextBlock>
-                <TextBox x:Name="PortBox" HorizontalAlignment="Left"></TextBox>
+                <TextBox x:Name="PortBox" Width="150" HorizontalAlignment="Left"></TextBox>
             </StackPanel>
 
         </SplitView.Pane>
@@ -45,7 +45,7 @@
                 <TextBlock Foreground="White" x:Name="temperature" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="5,0,0,0"></TextBlock>
                 <TextBlock Foreground="White" x:Name="pressure" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="5,0,0,0"></TextBlock>
                 <TextBlock Foreground="White" x:Name="lux" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="5,0,0,0"></TextBlock>
-                <TextBlock Foreground="White" x:Name="logArea" Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+                <TextBlock Foreground="Red" x:Name="logArea" Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" TextWrapping="Wrap" MaxWidth="214"></TextBlock>
                 <Image Grid.Row="1" Grid.Column="2" Grid.RowSpan="5">
                     <Image.Source>
                         <BitmapImage DecodePixelWidth="600" UriSource="Assets/bottles900x600.jpg" />

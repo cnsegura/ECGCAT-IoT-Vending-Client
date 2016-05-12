@@ -17,12 +17,13 @@ namespace ECGCAT_IoT_Vending_Client
 {
     public class Kafka
     { 
-        public async Task PostDataAsync(object _data, string _topic)
+        public async Task PostDataAsync(object _data, string _topic, string _ipString, string _portString)
         {
             UriBuilder u1 = new UriBuilder();
             //u1.Host = "localhost"; //DEBUG
-            u1.Host = "wssccatiot.westus.cloudapp.azure.com";
-            u1.Port = 8082;
+            //u1.Host = "wssccatiot.westus.cloudapp.azure.com"; OLD REMOVE IF WORKING
+            u1.Host = _ipString;
+            u1.Port = Int32.Parse(_portString);
             u1.Path = "topics/" + _topic;
             u1.Scheme = "http";
             Uri topicUri = u1.Uri;
