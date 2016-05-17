@@ -221,7 +221,14 @@ namespace ECGCAT_IoT_Vending_Client
             }
             else //we pulled the previously stored values from the local app settings store
             {
-                go = true;
+                if(serverIPURL != IpUrlBox.Text || serverPort != PortBox.Text)
+                {
+                    serverIPURL = IpUrlBox.Text;
+                    serverPort = PortBox.Text;
+                    SetAppStore(serverIPURL, serverPort);
+                    go = true;
+                }
+                
             }
         }
 
