@@ -205,12 +205,12 @@ namespace ECGCAT_IoT_Vending_Client
         {
             if (serverIPURL == null && serverPort ==null) //there is no local app settings store value for port and URL, we need to get one
             { 
-                if (IpUrlBox.Text == "" && PortBox.Text == "")
+                if (IpUrlBox.Text == "" && PortBox.Text == "") //you didn't fill out the boxes, and there were no previously stored settings
                 {
                     logArea.Text = "You need to add an IP/URL and Port number for the server";
                     go = false; 
                 }
-                else
+                else // you did fill out the boxes and we're grabbing the settings
                 {
                     logArea.Text = "";
                     serverIPURL = IpUrlBox.Text;
@@ -221,11 +221,15 @@ namespace ECGCAT_IoT_Vending_Client
             }
             else //we pulled the previously stored values from the local app settings store
             {
-                if(serverIPURL != IpUrlBox.Text || serverPort != PortBox.Text)
+                if(serverIPURL != IpUrlBox.Text || serverPort != PortBox.Text) //the local settings and current input text don't match
                 {
-                    serverIPURL = IpUrlBox.Text;
+                    serverIPURL = IpUrlBox.Text; //reset the settings to match the input text
                     serverPort = PortBox.Text;
                     SetAppStore(serverIPURL, serverPort);
+                    go = true;
+                }
+                else //the locat settings and input settings match. Go. 
+                {
                     go = true;
                 }
                 
